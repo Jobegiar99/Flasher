@@ -1,0 +1,29 @@
+#subForumBarRow{
+    background-color: #edf5ff;
+    margin-top: 2%;
+    border-radius: 50px;
+    width: 80%;
+}
+
+#subForumBarTitle{
+    text-align: left;
+    margin-left: 3vw;
+    margin-top: 1.5vh;
+}
+
+#subForumBarTitleDiv{
+    padding: 14;
+}
+
+#subForumTrashIcon{
+    height: 100%;
+    width: 7vw;
+    margin-top: 2vh;
+    margin-left: 80%;
+}
+
+.subForumBarImageDiv{
+    text-align: center;
+    margin-left: 40%;
+    margin-right: 20%;
+}

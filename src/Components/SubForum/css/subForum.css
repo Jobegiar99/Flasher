@@ -1,0 +1,24 @@
+#subForumContainer{
+    align-items: center;
+}
+
+#subForumPosts{
+    width: 100%;
+}
+
+#subForumButtonDiv{
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    margin-left: 10.5vw;
+}
+
+#subForumSubForumRow{
+    height: 70vh;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overflow-y: scroll;
+}
+
+#subForumSubForumRow::-webkit-scrollbar{
+    display: none;
+}
