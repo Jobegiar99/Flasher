@@ -7,7 +7,7 @@ function MainForumBar(props) {
   return (
     <Row id="mainForumBarRow">
       <Link to={`/subforum/${props.subForumTitle}`}>
-        <Col xs={6}>
+        <Col lg={6}>
           <div id="mainForumBarTitleDiv">
             <h1 id="mainForumBarTitle">{props.subForumTitle}</h1>
           </div>
