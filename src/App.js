@@ -5,19 +5,22 @@ import SubForum from "./Components/SubForum/js/subForum";
 import CreatePost from "./Components/CreatePost/createPost.js";
 import CreateSubForum from "./Components/CreateSubForum/createSubForum";
 import RemoveFromPage from "./Components/RemoveFromPage/removeFromPage";
+import Header from "./Components/Header";
+import PostView from "./Components/PostView/postView";
+import LoginRegister from "./Components/LoginRegister/loginRegister";
 
 export default function App() {
   return (
     <Router>
       <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-          </ul>
-        </nav>
+        <Header />
         <Switch>
+          <Route path="/login">
+            <LoginRegister />
+          </Route>
+          <Route path="/post/:postId">
+            <PostView />
+          </Route>
           <Route path="/removeSubForum/:forumId">
             <RemoveFromPage />
           </Route>
