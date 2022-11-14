@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Image, Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { Trash, HandThumbsUp, HandThumbsDown } from "react-bootstrap-icons";
 
 import "../css/subForumBar.css";
 function SubForumBar(props) {
@@ -15,37 +16,23 @@ function SubForumBar(props) {
         </Link>
       </Col>
 
-      <Col xs={3}>
+      <Col xs={6}></Col>
+      <Col xs={1}>
         <Link to={`/removeSubForum/${props.postTitle}`}>
-          <Image
-            fluid
-            id="mainForumTrashIcon"
-            src="/images/trashIcon.png"
-            style={{ height: "50px", width: "50px" }}
-          />
+          <Trash size={30} style={{ marginTop: "30px" }} />
         </Link>
       </Col>
 
-      <Col xs={3}>
+      <Col xs={1}>
         <div align="right" className="subForumBarImageDiv">
-          <Image
-            fluid
-            id="mainForumTrashIcon"
-            src="/images/likeIcon.png"
-            style={{ height: "50px", width: "50px" }}
-          />
+          <HandThumbsUp size={30} style={{ marginTop: "15px" }} />
           <h2>10</h2>
         </div>
       </Col>
 
-      <Col xs={3}>
+      <Col xs={1}>
         <div align="right" className="subForumBarImageDiv">
-          <Image
-            fluid
-            id="mainForumTrashIcon"
-            src="/images/dislikeIcon.png"
-            style={{ height: "50px", width: "50px" }}
-          />
+          <HandThumbsDown size={30} style={{ marginTop: "15px" }} />
           <h2>10</h2>
         </div>
       </Col>
