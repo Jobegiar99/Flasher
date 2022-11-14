@@ -18,7 +18,7 @@ export default class SubForumBar extends React.Component{
                     <div align="right" className="subForumBarImageDiv">
                         <Image fluid
                             id = "subForumTrashIcon"
-                            src="images/trashIcon.png"
+                            src="/images/trashIcon.png"
                         />
                     </div>
                 </Col>
@@ -27,7 +27,7 @@ export default class SubForumBar extends React.Component{
                     <div align="right" className="subForumBarImageDiv">
                         <Image fluid
                             id = "mainForumTrashIcon"
-                            src="images/likeIcon.png"
+                            src="/images/likeIcon.png"
                         />
                         <h2>10</h2>
                     </div>
@@ -37,7 +37,7 @@ export default class SubForumBar extends React.Component{
                     <div align="right" className="subForumBarImageDiv">
                         <Image fluid
                             id = "mainForumTrashIcon"
-                            src="images/dislikeIcon.png"
+                            src="/images/dislikeIcon.png"
                         />
                     <h2>10</h2>
                     </div>
