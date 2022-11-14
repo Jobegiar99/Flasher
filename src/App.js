@@ -7,6 +7,7 @@ import CreateSubForum from "./Components/CreateSubForum/createSubForum";
 import RemoveFromPage from "./Components/RemoveFromPage/removeFromPage";
 import Header from "./Components/Header";
 import PostView from "./Components/PostView/postView";
+import LoginRegister from "./Components/LoginRegister/loginRegister";
 
 export default function App() {
   return (
@@ -14,6 +15,9 @@ export default function App() {
       <div>
         <Header />
         <Switch>
+          <Route path="/login">
+            <LoginRegister />
+          </Route>
           <Route path="/post/:postId">
             <PostView />
           </Route>

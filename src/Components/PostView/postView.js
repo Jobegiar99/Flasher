@@ -68,6 +68,7 @@ function PostView() {
           </Card.Text>
         </Card.Body>
       </Card>
+      <h3 style={{ marginTop: "10px" }}>Comments:</h3>
       <Comment
         title="Nice"
         user="Ernesto1000"
@@ -78,12 +79,8 @@ function PostView() {
         user="CoolGuy1000"
         description="I think it was a bad experience that you had"
       />
-      
-      <Comment
-        title="Nice"
-        user="Mario1000"
-        description=""
-      />
+
+      <Comment title="Nice" user="Mario1000" description="" />
     </Container>
   );
 }
