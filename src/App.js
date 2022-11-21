@@ -9,6 +9,8 @@ import Header from "./Components/Header";
 import PostView from "./Components/PostView/postView";
 import LoginRegister from "./Components/LoginRegister/loginRegister";
 
+
+import { CreateDocument } from "./js/db/dbFunctions";
 export default function App() {
   return (
     <Router>
