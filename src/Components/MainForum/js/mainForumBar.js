@@ -5,11 +5,12 @@ import { Trash } from "react-bootstrap-icons";
 
 import "../css/mainForumBar.css";
 function MainForumBar(props) {
+
   return (
     <Row id="mainForumBarRow">
       <Col lg={6}>
         <Link
-          to={`/subforum/${props.subForumTitle}`}
+          to={`/subforum/${props.id}`}
           style={{ textDecoration: "none" }}
         >
           <div id="mainForumBarTitleDiv">
@@ -19,7 +20,7 @@ function MainForumBar(props) {
       </Col>
       <Col xs={6}>
         <div align="right" id="mainForumBarImageDiv">
-          <Link to={`/removeSubForum/${props.subForumTitle}`}>
+          <Link to={`/removeSubForum/${props.id}`}>
             <Trash size={30} style={{ marginTop: "15px" }} />
           </Link>
         </div>
