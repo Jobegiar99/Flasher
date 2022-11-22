@@ -5,6 +5,7 @@ import SubForum from "./Components/SubForum/js/subForum";
 import CreatePost from "./Components/CreatePost/createPost.js";
 import CreateSubForum from "./Components/CreateSubForum/createSubForum";
 import RemoveFromPage from "./Components/RemoveFromPage/removeFromPage";
+import RemovePost from "./Components/RemovePost/removePost";
 import Header from "./Components/Header";
 import PostView from "./Components/PostView/postView";
 import LoginRegister from "./Components/LoginRegister/loginRegister";
@@ -20,19 +21,19 @@ export default function App() {
           <Route path="/login">
             <LoginRegister />
           </Route>
-          <Route path="/post/:postId">
+          <Route path="/post/:forumId/:postId">
             <PostView />
           </Route>
           <Route path="/removeSubForum/:forumId">
             <RemoveFromPage />
           </Route>
-          <Route path="/remove">
-            <RemoveFromPage />
+          <Route path="/removePost/:forumId/:postId">
+            <RemovePost />
           </Route>
           <Route path="/createSubForum">
             <CreateSubForum />
           </Route>
-          <Route path="/createPost">
+          <Route path="/createPost/:forumId">
             <CreatePost />
           </Route>
           <Route path="/subforum/:forumId">
