@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import MainForum from "./Components/MainForum/js/mainForum";
 import SubForum from "./Components/SubForum/js/subForum";
@@ -10,16 +10,23 @@ import Header from "./Components/Header";
 import PostView from "./Components/PostView/postView";
 import LoginRegister from "./Components/LoginRegister/loginRegister";
 
-
 import { CreateDocument } from "./js/db/dbFunctions";
+import SignUp from "./Components/SignUp/signUp";
 export default function App() {
+  const [isSignedIn, setIsSignedIn] = useState();
   return (
     <Router>
       <div>
-        <Header />
+        <Header isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn} />
         <Switch>
           <Route path="/login">
-            <LoginRegister />
+            <LoginRegister
+              isSignedIn={isSignedIn}
+              setIsSignedIn={setIsSignedIn}
+            />
+          </Route>
+          <Route path="/signUp">
+            <SignUp isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn} />
           </Route>
           <Route path="/post/:forumId/:postId">
             <PostView />
@@ -47,7 +54,6 @@ export default function App() {
     </Router>
   );
 }
-
 
 function Home() {
   return <h2>Home</h2>;

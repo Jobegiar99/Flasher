@@ -10,8 +10,19 @@ import {
   ReadDocument,
   DeleteDocument,
 } from "../../../js/db/dbFunctions";
+import { CheckAuth } from "../../../js/db/authFunctions";
+import { useHistory } from 'react-router-dom'
 
 function MainForum() {
+  const history = useHistory();
+  useEffect(() => {
+    let authToken = sessionStorage.getItem("Auth Token");
+
+    if (!authToken) {
+      history.push("/");
+    }
+  }, []);
+
   const [subForums, setSubForums] = useState([]);
 
   const get = () => {
@@ -20,6 +31,14 @@ function MainForum() {
       console.log(data);
     });
   };
+
+  CheckAuth().then((user) => {
+    if (user) {
+      console.log("User: ", user);
+    } else {
+      console.log("No user");
+    }
+  });
 
   useEffect(() => {
     get();

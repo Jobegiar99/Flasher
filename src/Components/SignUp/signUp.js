@@ -3,23 +3,21 @@ import { Image, Container, Row, Button } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
-import { SignIn } from "../../js/db/authFunctions";
+import { CreateUser } from "../../js/db/authFunctions";
 import { useHistory } from "react-router-dom";
 
-function LoginRegister(props) {
+function SignUp(props) {
   const history = useHistory();
 
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
   const handleSubmit = (event) => {
-    SignIn(email, password)
+    CreateUser(email, password)
       .then((user) => {
         console.log("User: ", user);
         props.setIsSignedIn(true);
-        history.push("/", {
-          contentOfLocationState: true,
-        });
+        history.push("/");
       })
       .catch((error) => {
         console.log("Error Creating User: ", error);
@@ -41,6 +39,9 @@ function LoginRegister(props) {
                 placeholder="Enter email"
                 onChange={(e) => setEmail(e.target.value)}
               />
+              <Form.Text className="text-muted">
+                We'll never share your email with anyone else.
+              </Form.Text>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -52,15 +53,8 @@ function LoginRegister(props) {
               />
             </Form.Group>
             <Button variant="primary" type="submit">
-              Sign In
+              Create Account
             </Button>
-            <br />
-            <br />
-            <Link to="/signUp">
-              <Button variant="secondary" size="sm">
-                Dont have an account? Create one
-              </Button>
-            </Link>
           </Form>
         </Card.Body>
       </Card>
@@ -68,4 +62,4 @@ function LoginRegister(props) {
   );
 }
 
-export default LoginRegister;
+export default SignUp;
