@@ -7,6 +7,7 @@ import {
   query,
   onSnapshot,
   getDoc,
+  setDoc,
   doc,
 } from "firebase/firestore";
 import { json } from "react-router-dom";
@@ -16,6 +17,15 @@ import { db } from "../../firebaseConfig";
 export async function CreateDocument(targetCollection, docData) {
   try {
     const docRef = await addDoc(collection(db, targetCollection), docData);
+    console.log("DOCUMENT: ", docRef.id);
+  } catch {
+    console.log("Eror Adding " + targetCollection);
+  }
+}
+
+export async function CreateDocumentWithId(targetCollection, docData, id) {
+  try {
+    const docRef = await setDoc(doc(db, targetCollection, id), docData);
     console.log("DOCUMENT: ", docRef.id);
   } catch {
     console.log("Eror Adding " + targetCollection);

@@ -11,15 +11,20 @@ import {
   DeleteDocument,
 } from "../../../js/db/dbFunctions";
 import { CheckAuth } from "../../../js/db/authFunctions";
-import { useHistory } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 
 function MainForum() {
   const history = useHistory();
+
+  const [uid, setUid] = useState("");
+
+  const [isMod, setIsMod] = useState(false);
+
   useEffect(() => {
     let authToken = sessionStorage.getItem("Auth Token");
 
     if (!authToken) {
-      history.push("/");
+      history.push("/login");
     }
   }, []);
 
@@ -28,17 +33,17 @@ function MainForum() {
   const get = () => {
     ReadDocument("arquitecturaxd").then((data) => {
       setSubForums(data);
-      console.log(data);
+    });
+
+    ReadDocument("users").then((data) => {
+      data.forEach((element) => {
+        if (element.id === sessionStorage.getItem("uid")) {
+          setUid(element.id);
+          setIsMod(element.isMod);
+        }
+      });
     });
   };
-
-  CheckAuth().then((user) => {
-    if (user) {
-      console.log("User: ", user);
-    } else {
-      console.log("No user");
-    }
-  });
 
   useEffect(() => {
     get();
@@ -50,6 +55,7 @@ function MainForum() {
         subForumTitle={subForum.title}
         subForumDescription={subForum.description}
         id={subForum.id}
+        isMod={isMod}
       />
     );
   });

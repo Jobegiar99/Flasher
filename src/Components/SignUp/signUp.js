@@ -10,10 +10,11 @@ function SignUp(props) {
   const history = useHistory();
 
   const [email, setEmail] = React.useState("");
+  const [userName, setUserName] = React.useState("");
   const [password, setPassword] = React.useState("");
 
   const handleSubmit = (event) => {
-    CreateUser(email, password)
+    CreateUser(email, userName, password)
       .then((user) => {
         console.log("User: ", user);
         props.setIsSignedIn(true);
@@ -42,6 +43,15 @@ function SignUp(props) {
               <Form.Text className="text-muted">
                 We'll never share your email with anyone else.
               </Form.Text>
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicUserName">
+              <Form.Label>User Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter User Name"
+                onChange={(e) => setUserName(e.target.value)}
+              />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
