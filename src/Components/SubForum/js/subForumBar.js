@@ -3,19 +3,25 @@ import { Image, Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Trash, HandThumbsUp, HandThumbsDown } from "react-bootstrap-icons";
 
-import { CreateDocument, ReadDocument, DeleteDocument } from "../../../js/db/dbFunctions";
+import {
+  CreateDocument,
+  ReadDocument,
+  DeleteDocument,
+} from "../../../js/db/dbFunctions";
 
 import "../css/subForumBar.css";
 function SubForumBar(props) {
   const [id, setId] = React.useState(props.id);
   const get = ReadDocument("arquitecturaxd").then((data) => {
-    data.forEach((element) => {
-    })
+    data.forEach((element) => {});
   });
   return (
     <Row id="subForumBarRow">
       <Col xs={3}>
-        <Link to={`/post/${props.forumId}/${id}`} style={{ textDecoration: "none" }}>
+        <Link
+          to={`/post/${props.forumId}/${id}`}
+          style={{ textDecoration: "none" }}
+        >
           <div id="subForumBarTitleDiv">
             <h4 id="subForumBarTitle">{props.postTitle}</h4>
           </div>
@@ -24,9 +30,11 @@ function SubForumBar(props) {
 
       <Col xs={6}></Col>
       <Col xs={1}>
-        <Link to={`/removePost/${props.forumId}/${props.id}`}>
-          <Trash size={30} style={{ marginTop: "30px" }} />
-        </Link>
+        {props.isMod ? (
+          <Link to={`/removePost/${props.forumId}/${props.id}`}>
+            <Trash size={30} style={{ marginTop: "30px" }} />
+          </Link>
+        ) : null}
       </Col>
 
       <Col xs={1}>

@@ -12,14 +12,37 @@ import {
   DeleteDocument,
 } from "../../../js/db/dbFunctions";
 
+import { useHistory } from "react-router-dom";
+
 function SubForum() {
+  const history = useHistory();
   let { forumId } = useParams();
   const [posts, setPosts] = useState([]);
+
+  const [uid, setUid] = useState("");
+  const [isMod, setIsMod] = useState(false);
+
+  useEffect(() => {
+    let authToken = sessionStorage.getItem("Auth Token");
+
+    if (!authToken) {
+      history.push("/login");
+    }
+  }, []);
 
   const get = () => {
     ReadDocument(`arquitecturaxd/${forumId}/posts`).then((data) => {
       setPosts(data);
       console.log(data);
+    });
+
+    ReadDocument("users").then((data) => {
+      data.forEach((element) => {
+        if (element.id === sessionStorage.getItem("uid")) {
+          setUid(element.id);
+          setIsMod(element.isMod);
+        }
+      });
     });
   };
 
@@ -36,6 +59,7 @@ function SubForum() {
         numLikes={post.likes ? post.likes : 0}
         numDislikes={post.dislikes ? post.dislikes : 0}
         forumId={forumId}
+        isMod={isMod}
       />
     );
   });
